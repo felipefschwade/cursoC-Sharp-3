@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using TrabalhandoComClasses;
+using Empresa.CaixaEletronico;
+using Empresa.CaixaEletronico.Contas;
+using Empresa.CaixaEletronico.Usuarios;
+using Empresa.CaixaEletronico.Servicos;
 
 namespace WindowsFormsApplication1
 {

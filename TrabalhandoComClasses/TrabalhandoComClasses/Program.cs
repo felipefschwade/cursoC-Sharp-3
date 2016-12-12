@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1;
 
-namespace TrabalhandoComClasses
+namespace Empresa.CaixaEletronico
 {
     static class Program
     {

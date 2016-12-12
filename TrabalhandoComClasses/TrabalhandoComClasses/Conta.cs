@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Empresa.CaixaEletronico.Usuarios;
+using System;
 
-namespace TrabalhandoComClasses
+namespace Empresa.CaixaEletronico.Contas
 {
     internal abstract class Conta
     {
