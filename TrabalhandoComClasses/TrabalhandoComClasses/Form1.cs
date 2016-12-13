@@ -20,18 +20,22 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        public void AdicionaConta(Conta conta)
+        {
+            banco.adicionaConta(conta);
+            comboTitulares.Items.Add(conta);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         { 
             conta.Titular = new Cliente("Victor");
             conta.Titular.idade = 19;
             conta.deposita(250.0);
-            conta.Numero = 1;
             conta.transfere(100, cp);
             cp.Titular = new Cliente("Cezar");
             cp.Titular.idade = 19;
             cp.deposita(250.0);
-            cp.Numero = 2;
-
+            
             banco.adicionaConta(conta);
             banco.adicionaConta(cp);
 
@@ -117,8 +121,8 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             var conta = buscaConta();
-            MessageBox.Show("Conta Número: " + conta.Numero + "\n"
-                                + "Saldo: " + conta.Numero);
+            MessageBox.Show("Conta Número: " + Conta.Numero + "\n"
+                                + "Saldo: " + Conta.Numero);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,7 +131,7 @@ namespace WindowsFormsApplication1
 
             var conta = buscaConta();
 
-            textoNumero.Text = Convert.ToString(conta.Numero);
+            textoNumero.Text = Convert.ToString(Conta.Numero);
             textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoTitular.Text = conta.Titular.Nome;
 
@@ -185,6 +189,12 @@ namespace WindowsFormsApplication1
             gi.Adiciona(sv);
             gi.Adiciona(cp);
             MessageBox.Show(Convert.ToString(gi.Total));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            CadastroDeConta cad = new CadastroDeConta(this);
+            cad.ShowDialog();
         }
     }
 }

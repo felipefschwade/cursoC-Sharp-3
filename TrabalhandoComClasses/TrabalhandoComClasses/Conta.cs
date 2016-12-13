@@ -3,12 +3,16 @@ using System;
 
 namespace Empresa.CaixaEletronico.Contas
 {
-    internal abstract class Conta
+    public abstract class Conta
     {
         public Cliente Titular { get; set; } 
         public double Saldo { get; protected set; }
-        public int Numero { get; set; }
+        public static int Numero { get; private set; }
         public int Agencia { get; set; }
+
+        public Conta() {
+            Numero++;
+        }
 
         public abstract void saca(double valorASacar);
         public void deposita(double valorADepositar)

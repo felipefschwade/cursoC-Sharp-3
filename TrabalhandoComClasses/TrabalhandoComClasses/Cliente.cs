@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Empresa.CaixaEletronico.Usuarios
 {
-    class Cliente
+    public class Cliente
     {
         public string Nome { get; set; }
         public string rg;
