@@ -23,6 +23,10 @@ namespace Empresa.CaixaEletronico.Usuarios
         {
             return this.idade >= 18;
         }
-        
+        public override string ToString()
+        {
+            return Nome;
+        }
+
     }
 }

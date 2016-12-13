@@ -39,9 +39,10 @@ namespace WindowsFormsApplication1
             {
                 if (c != null)
                 {
-                    comboTitulares.Items.Add(c.Titular.Nome);
+                    comboTitulares.Items.Add(c);
                 }
             }
+            comboTitulares.DisplayMember = "titular";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -134,24 +135,26 @@ namespace WindowsFormsApplication1
             {
                 if (c != null)
                 {
-                    comboDestinatario.Items.Add(c.Titular.Nome);
+                    if (!c.Equals(conta))
+                    {
+                        comboDestinatario.Items.Add(c);
+                    }
                 }
             }
             comboDestinatario.SelectedIndex = 0;
+            comboDestinatario.DisplayMember = "titular";
 
         }
 
         private Conta buscaConta()
         {
-            var index = comboTitulares.SelectedIndex;
-            return this.banco.Contas[index];
+            return (Conta)comboTitulares.SelectedItem;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             var conta = buscaConta();
-            var index = comboDestinatario.SelectedIndex;
-            var destino = banco.Contas[index];
+            var destino = (Conta)comboDestinatario.SelectedItem;
             if (destino != null && textoValorTransferencia.Text != "")
             {
                 double valor = Convert.ToDouble(textoValorTransferencia.Text);

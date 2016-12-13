@@ -17,13 +17,13 @@ namespace Empresa.CaixaEletronico.Contas
 
         public override void saca(double valorASacar)
         {
-            if (valorASacar > 0 && valorASacar <= this.Saldo)
+            if (valorASacar > 0 && valorASacar <= (this.Saldo - 0.1))
             {
                 this.Saldo -= valorASacar + 0.1;
             }
             else
             {
-                throw new System.InvalidOperationException("Você não possui saldo para este saque");
+                throw new System.InvalidOperationException("Você não possui saldo para esta operação");
             }
         }
     }
