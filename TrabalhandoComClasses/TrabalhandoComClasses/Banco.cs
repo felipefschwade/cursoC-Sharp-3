@@ -9,12 +9,16 @@ namespace Empresa.CaixaEletronico
 {
     class Banco
     {
-        public Conta[] Contas { get; private set; } = new Conta[10];
+        public SortedSet<Conta> Contas { get; private set; }
         public int Quantidade { private set; get; }
         public void adicionaConta(Conta conta)
         {
-            Contas[Quantidade] = conta;
-            Quantidade++;
+            Contas.Add(conta);
+        }
+
+        public void RemoveConta(Conta conta)
+        {
+            Contas.Remove(conta);   
         }
     }
 }

@@ -21,16 +21,41 @@ namespace Empresa.CaixaEletronico
         {
             this.aplicacaoPrincipal = formulario;
             InitializeComponent();
+            comboTipoConta.Items.Add("Conta Corrente");
+            comboTipoConta.Items.Add("Conta Poupança");
+            comboTipoConta.SelectedIndex = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             var cliente = new Cliente(textoNome.Text);
             cliente.rg = textoRg.Text;
-            var conta = new ContaCorrente() {
-                Titular = cliente
-            };
-            aplicacaoPrincipal.AdicionaConta(conta);
+            var tipoConta = comboTipoConta.SelectedItem;
+            
+            try
+            {
+                if (tipoConta.Equals("Conta Corrente"))
+                {
+                    var conta = new ContaCorrente()
+                    {
+                        Titular = cliente
+                    };
+                    aplicacaoPrincipal.AdicionaConta(conta);
+                }
+                else if (tipoConta.Equals("Conta Poupança"))
+                {
+                    var conta = new ContaPouopanca()
+                    {
+                        Titular = cliente
+                    };
+                    aplicacaoPrincipal.AdicionaConta(conta);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
             MessageBox.Show("Conta cadastrada com sucesso!");
             this.Close();
         }

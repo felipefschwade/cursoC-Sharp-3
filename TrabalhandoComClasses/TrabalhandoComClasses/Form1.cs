@@ -196,5 +196,33 @@ namespace WindowsFormsApplication1
             CadastroDeConta cad = new CadastroDeConta(this);
             cad.ShowDialog();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var conta = buscaConta();
+            try
+            {
+                comboTitulares.Items.Remove(conta);
+                comboTitulares.Items.Clear();
+                comboTitulares.SelectedIndex = -1;
+                banco.RemoveConta(conta);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            foreach (Conta c in banco.Contas)
+            {
+                if (c != null)
+                {
+                    comboTitulares.Items.Add(c);
+                }
+            }
+            textoNumero.Text = "";
+            textoTitular.Text = "";
+            textoSaldo.Text = "";
+
+            
+        }
     }
 }
