@@ -44,20 +44,20 @@ namespace Empresa.CaixaEletronico
                 }
                 else if (tipoConta.Equals("Conta Poupança"))
                 {
-                    var conta = new ContaPouopanca()
+                    var conta = new ContaPoupanca()
                     {
                         Titular = cliente
                     };
                     aplicacaoPrincipal.AdicionaConta(conta);
                 }
+                MessageBox.Show("Conta cadastrada com sucesso!");
+                this.Close();
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
             
-            MessageBox.Show("Conta cadastrada com sucesso!");
-            this.Close();
         }
     }
 }

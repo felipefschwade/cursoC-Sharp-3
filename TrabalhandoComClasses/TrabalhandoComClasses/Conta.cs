@@ -3,16 +3,12 @@ using System;
 
 namespace Empresa.CaixaEletronico.Contas
 {
-    public abstract class Conta
+    public abstract class Conta : IComparable
     {
         public Cliente Titular { get; set; } 
         public double Saldo { get; protected set; }
-        public static int Numero { get; private set; }
+        public int Numero { get; protected set; }
         public int Agencia { get; set; }
-
-        public Conta() {
-            Numero++;
-        }
 
         public abstract void saca(double valorASacar);
         public void deposita(double valorADepositar)
@@ -34,6 +30,13 @@ namespace Empresa.CaixaEletronico.Contas
             destino.deposita(valorATransferir);
             Console.WriteLine(this.Saldo);
         }
-        
+
+        public int CompareTo(object obj)
+        {
+            Conta c = (Conta)obj;
+            if (Numero < c.Numero) return -1;
+            if (Numero == c.Numero) return 0;
+            return 1;
+        }
     }
 }

@@ -8,6 +8,13 @@ namespace Empresa.CaixaEletronico.Contas
 {
     class ContaCorrente : Conta
     {
+
+        public ContaCorrente()
+        {
+            Numero++;
+            Numero = Numero;
+        }
+
         public override void saca(double valorASacar)
         {
             if (valorASacar > 0 && valorASacar <= this.Saldo + 0.1)

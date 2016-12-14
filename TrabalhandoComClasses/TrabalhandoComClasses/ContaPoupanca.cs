@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace Empresa.CaixaEletronico.Contas
 {
-    class ContaPouopanca : Conta, ITributavel
+    class ContaPoupanca : Conta, ITributavel
     {
+        public ContaPoupanca()
+        {
+            Numero++;
+            Numero = Numero;
+        }
+
         public double calculaTributos()
         {
             return Saldo * 0.02;

@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
     {
         Banco banco = new Banco();
         Conta conta = new ContaCorrente();
-        ContaPouopanca cp = new ContaPouopanca();
+        ContaPoupanca cp = new ContaPoupanca();
         GerenciadorDeImposto gi = new GerenciadorDeImposto();
         SeguroDeVida sv = new SeguroDeVida();
         
@@ -36,17 +36,11 @@ namespace WindowsFormsApplication1
             cp.Titular.idade = 19;
             cp.deposita(250.0);
             
-            banco.adicionaConta(conta);
-            banco.adicionaConta(cp);
+            AdicionaConta(conta);
+            AdicionaConta(cp);
 
-            foreach (Conta c in banco.Contas)
-            {
-                if (c != null)
-                {
-                    comboTitulares.Items.Add(c);
-                }
-            }
             comboTitulares.DisplayMember = "titular";
+            comboTitulares.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -121,8 +115,8 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             var conta = buscaConta();
-            MessageBox.Show("Conta Número: " + Conta.Numero + "\n"
-                                + "Saldo: " + Conta.Numero);
+            MessageBox.Show("Conta Número: " + conta.Numero + "\n"
+                                + "Saldo: " + conta.Numero);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,7 +125,7 @@ namespace WindowsFormsApplication1
 
             var conta = buscaConta();
 
-            textoNumero.Text = Convert.ToString(Conta.Numero);
+            textoNumero.Text = Convert.ToString(conta.Numero);
             textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoTitular.Text = conta.Titular.Nome;
 
@@ -203,20 +197,13 @@ namespace WindowsFormsApplication1
             try
             {
                 comboTitulares.Items.Remove(conta);
-                comboTitulares.Items.Clear();
                 comboTitulares.SelectedIndex = -1;
                 banco.RemoveConta(conta);
+                MessageBox.Show("Conta Removida com Sucesso!");
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-            }
-            foreach (Conta c in banco.Contas)
-            {
-                if (c != null)
-                {
-                    comboTitulares.Items.Add(c);
-                }
             }
             textoNumero.Text = "";
             textoTitular.Text = "";
