@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace Empresa.CaixaEletronico.Contas
 {
@@ -25,6 +25,7 @@ namespace Empresa.CaixaEletronico.Contas
         {
             if (valorASacar > 0 && valorASacar <= (this.Saldo - 0.1))
             {
+                MessageBox.Show("Contas poupança pagam 10 centavos de saque");
                 this.Saldo -= valorASacar + 0.1;
             }
             else

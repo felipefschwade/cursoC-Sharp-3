@@ -52,8 +52,9 @@ namespace WindowsFormsApplication1
             {
                 var valor = Convert.ToDouble(textoValorParaDeposito.Text);
                 conta.deposita(valor);
-                MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
-                            + "Saldo Atual: " + conta.Saldo);
+                MessageBox.Show(string.Format("Saldo Anterior: {0} \n" + 
+                                "Saldo Atual: {1} ", Convert.ToString(conta.Saldo - valor), 
+                                                     Convert.ToString(conta.Saldo)));
             }
             catch (Exception ex)
             {
@@ -77,8 +78,9 @@ namespace WindowsFormsApplication1
             try
             {
                 conta.saca(valor);
-                MessageBox.Show("Saldo Anterior: " + (conta.Saldo + valor) + "\n"
-                            + "Saldo Atual: " + conta.Saldo);
+                MessageBox.Show(string.Format("Saldo Anterior: {0} \n" +
+                                "Saldo Atual: {1} ", Convert.ToString(conta.Saldo + valor),
+                                                     Convert.ToString(conta.Saldo)));
             }
             catch (Exception ex)
             {
@@ -198,8 +200,9 @@ namespace WindowsFormsApplication1
             {
                 comboTitulares.Items.Remove(conta);
                 comboTitulares.SelectedIndex = -1;
+                var nome = conta.Titular.Nome;
                 banco.RemoveConta(conta);
-                MessageBox.Show("Conta Removida com Sucesso!");
+                MessageBox.Show(string.Format("Conta pertencente a {0} Removida com Sucesso!", nome));
             }
             catch (Exception exception)
             {
